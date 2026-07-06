@@ -1,17 +1,60 @@
 # autter-demo-nextjs-saas
 
-A broken SaaS-style Next.js dashboard with mock auth, organizations, projects, invites, usage tracking, plan limits, analytics, and a billing webhook.
+A realistic broken SaaS-style Next.js dashboard for testing [Autter](https://autter.dev) code review workflows.
 
-This is an **Autter Sandbox** repository. It intentionally contains realistic bugs and risky implementation patterns so design partners can test AI-editor workflows and Autter review quality.
+This repository is part of the Autter Sandbox set. It intentionally contains subtle bugs and risky implementation patterns that are common in AI-assisted product work: fragile auth state, missing webhook validation, tenant isolation gaps, concurrency issues, information disclosure, N+1 data loading, and validation drift.
 
-## How to use this with Autter
+Use it when you want to show a design partner how Autter reviews pull requests against a real-looking SaaS codebase instead of a toy example.
 
-1. Pick a challenge
-2. Paste the suggested prompt into your AI code editor
-3. Make the fix
-4. Open a PR
-5. Let Autter review it
-6. Fix what Autter catches
+## What this app includes
+
+- Next.js App Router with TypeScript
+- Mock email/password session handling
+- Organizations, projects, invites, usage tracking, and plan-limit-style behavior
+- Billing webhook route
+- Dashboard analytics-style page
+- Vitest tests with expected-failure markers for planted bugs
+- Challenge files with copy-paste AI editor prompts
+- GitHub issue templates copied from the challenge files
+
+## Quick start
+
+```bash
+git clone https://github.com/Autter-dev/autter-demo-nextjs-saas.git
+cd autter-demo-nextjs-saas
+npm install
+npm test
+npm run dev
+```
+
+Open the local app at `http://localhost:3000`.
+
+To verify the production build:
+
+```bash
+npm run build
+```
+
+## Demo flow with Autter
+
+1. Fork this repository or create a working branch.
+2. Go to [autter.dev](https://autter.dev) and sign in.
+3. Connect GitHub to Autter if it is not connected already.
+4. Add this repository to the Autter installation or select it from the Autter dashboard.
+5. Pick one challenge from the table below.
+6. Open the matching file in `/challenges`.
+7. Copy the "Suggested AI Editor Prompt" into Cursor, Claude Code, Copilot, Windsurf, or another AI code editor.
+8. Let the editor make a small fix and add or update tests.
+9. Push the branch and open a pull request.
+10. Let Autter review the PR, then address the findings it raises.
+
+The strongest demo path is to pick a security or tenant-isolation challenge first, because Autter should identify risks that a normal green test run might miss.
+
+## How the sandbox is designed
+
+This repo is intentionally imperfect. Do not fix every issue on `main`. Each challenge is meant to create a focused PR that Autter can review.
+
+Some tests use expected-failure markers. They document known broken behavior while keeping the baseline suite runnable for demo setup. When solving a challenge, convert or replace the relevant expected-failure coverage with passing regression tests.
 
 ## Challenges
 
@@ -26,6 +69,24 @@ This is an **Autter Sandbox** repository. It intentionally contains realistic bu
 | [Dashboard N+1 query pattern](./challenges/dashboard-n-1-query-pattern.md) | Medium | Performance | performance regression risk |
 | [Generated validation logic is duplicated and inconsistent](./challenges/generated-validation-logic-is-duplicated-and-inconsistent.md) | Low | Maintainability | maintainability risk and behavior drift |
 
-## Local development
+## Recommended PR description
 
-Install dependencies, run the test suite, then pick a challenge. Some tests intentionally document broken behavior with expected-failure markers; they are part of the sandbox design.
+```markdown
+## What changed
+- Fixed the selected challenge
+- Added or updated regression coverage
+
+## Why
+- The previous implementation allowed the broken behavior described in `/challenges/...`
+
+## Validation
+- npm test
+- npm run build
+
+## Risks
+- Note any behavior that Autter should review carefully
+```
+
+## Learn more
+
+Visit [autter.dev](https://autter.dev) to learn more about Autter and connect this repository as a review demo.
