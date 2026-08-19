@@ -58,32 +58,36 @@ Some tests use expected-failure markers. They document known broken behavior whi
 
 ## Challenges
 
-| Challenge | Difficulty | Category | Expected Autter review angle |
-| --- | --- | --- | --- |
-| [Broken session handling after browser refresh](./challenges/broken-session-handling-after-browser-refresh.md) | Medium | Auth | fragile auth state handling |
-| [Missing webhook signature verification](./challenges/missing-webhook-signature-verification.md) | Medium | Security | security risk at an external trust boundary |
-| [Cross-org project access bug](./challenges/cross-org-project-access-bug.md) | High | Authorization | tenant isolation and authorization bypass |
-| [Usage counter race condition](./challenges/usage-counter-race-condition.md) | High | Reliability | data consistency and concurrency risk |
-| [API leaks stack traces](./challenges/api-leaks-stack-traces.md) | Low | Security | information disclosure |
-| [Invite acceptance missing expiry check](./challenges/invite-acceptance-missing-expiry-check.md) | Medium | Business logic | broken business logic and missing edge-case tests |
-| [Dashboard N+1 query pattern](./challenges/dashboard-n-1-query-pattern.md) | Medium | Performance | performance regression risk |
-| [Generated validation logic is duplicated and inconsistent](./challenges/generated-validation-logic-is-duplicated-and-inconsistent.md) | Low | Maintainability | maintainability risk and behavior drift |
+| Challenge                                                                                                                              | Difficulty | Category        | Expected Autter review angle                      |
+| -------------------------------------------------------------------------------------------------------------------------------------- | ---------- | --------------- | ------------------------------------------------- |
+| [Broken session handling after browser refresh](./challenges/broken-session-handling-after-browser-refresh.md)                         | Medium     | Auth            | fragile auth state handling                       |
+| [Missing webhook signature verification](./challenges/missing-webhook-signature-verification.md)                                       | Medium     | Security        | security risk at an external trust boundary       |
+| [Cross-org project access bug](./challenges/cross-org-project-access-bug.md)                                                           | High       | Authorization   | tenant isolation and authorization bypass         |
+| [Usage counter race condition](./challenges/usage-counter-race-condition.md)                                                           | High       | Reliability     | data consistency and concurrency risk             |
+| [API leaks stack traces](./challenges/api-leaks-stack-traces.md)                                                                       | Low        | Security        | information disclosure                            |
+| [Invite acceptance missing expiry check](./challenges/invite-acceptance-missing-expiry-check.md)                                       | Medium     | Business logic  | broken business logic and missing edge-case tests |
+| [Dashboard N+1 query pattern](./challenges/dashboard-n-1-query-pattern.md)                                                             | Medium     | Performance     | performance regression risk                       |
+| [Generated validation logic is duplicated and inconsistent](./challenges/generated-validation-logic-is-duplicated-and-inconsistent.md) | Low        | Maintainability | maintainability risk and behavior drift           |
 
 ## Recommended PR description
 
 ```markdown
 ## What changed
+
 - Fixed the selected challenge
 - Added or updated regression coverage
 
 ## Why
+
 - The previous implementation allowed the broken behavior described in `/challenges/...`
 
 ## Validation
+
 - npm test
 - npm run build
 
 ## Risks
+
 - Note any behavior that Autter should review carefully
 ```
 

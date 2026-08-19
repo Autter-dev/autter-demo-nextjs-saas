@@ -1,12 +1,15 @@
 # Challenge: Broken session handling after browser refresh
 
 ## Context
+
 This repository is an Autter Sandbox project. The feature is intentionally close to code teams ship in production, where small AI-generated changes can create security, reliability, or maintainability risks.
 
 ## Problem
+
 Users appear logged out after a browser refresh even though a valid session exists.
 
 ## Expected Behavior
+
 The implementation should handle this case safely while preserving the existing product behavior and local developer workflow.
 
 ## Suggested AI Editor Prompt
@@ -27,20 +30,20 @@ Requirements:
 
 ## Acceptance Criteria
 
-* [ ] The issue is fixed
-* [ ] Relevant tests are added or updated
-* [ ] Existing behavior is preserved
-* [ ] No unrelated refactors
-* [ ] The PR description explains the approach
-* [ ] Autter review passes
+- [ ] The issue is fixed
+- [ ] Relevant tests are added or updated
+- [ ] Existing behavior is preserved
+- [ ] No unrelated refactors
+- [ ] The PR description explains the approach
+- [ ] Autter review passes
 
 ## What Autter Should Review
 
-* fragile auth state handling
-* missing tests or weak negative tests
-* unsafe trust boundaries
-* regressions in adjacent behavior
-* merge readiness
+- fragile auth state handling
+- missing tests or weak negative tests
+- unsafe trust boundaries
+- regressions in adjacent behavior
+- merge readiness
 
 ---
 
