@@ -9,10 +9,19 @@ import {
 } from "./projects";
 import { recordUsage } from "./usage";
 describe("planted SaaS bugs", () => {
-  test.fails("keeps session after refresh", () => {
+  test("keeps session after refresh", () => {
     login("ada@acme.test");
     simulateBrowserRefresh();
     expect(getUserBySession("valid-session")?.email).toBe("ada@acme.test");
+  });
+  test("rejects an unknown session token after refresh", () => {
+    login("ada@acme.test");
+    simulateBrowserRefresh();
+    expect(getUserBySession("not-a-real-token")).toBeNull();
+  });
+  test("still has no user with no token and no client state", () => {
+    simulateBrowserRefresh();
+    expect(getUserBySession()).toBeNull();
   });
   test.fails("blocks cross-org access", () => {
     expect(getProjectForUser({ orgId: "org_a" }, "prj_b")).toBeNull();
